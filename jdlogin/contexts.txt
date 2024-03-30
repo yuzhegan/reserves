@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="GBK"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>京东-欢迎登录</title>
+    <link rel="icon" href="//www.jd.com/favicon.ico"/>
+    <link type="text/css" rel="stylesheet" href="//misc.360buyimg.com/user/passport/1.0.0/widget/base/base.css" source="widget"/>
+    <link type="text/css" rel="stylesheet" href="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/widget/common-2016-1124/common-2016-1124.css" source="widget"/>
+    <link type="text/css" rel="stylesheet" href="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/widget/login-form-2018-0827/login-form-2018-0827.css" source="widget"/>
+    <link type="text/css" rel="stylesheet" href="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/widget/login-banner/login-banner.css" source="widget"/>
+    <link type="text/css" rel="stylesheet" href="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/widget/safe-step/safe-step.css" source="widget"/>
+    <link type="text/css" rel="stylesheet" href="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/css/tinyscrollbar-170524.css">
+    <script type="text/javascript" src="//misc.360buyimg.com/jdf/lib/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/js/underscore-min.js"></script>
+    <script type="text/javascript" src="//ivs.jd.com/slide/js/jdSlide.1.0.min.js"></script>
+    <script type="text/javascript" src="https://jrsecstatic.jdpay.com/jr-sec-dev-static/summer-cryptico-h5.min.js"></script>
+    <script type="text/javascript" src="//passport.jd.com/new/js/aks.js"></script>
+    <script type="text/javascript" src="/new/js/ziwuxianwrapper.js"></script>
+    <script src="/new/js/sign.js"></script>
+    <script src="https://storage.360buyimg.com/webcontainer/js_security_v3_0.1.5.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            window.SysConfig = {
+            encryptInfo:  true ,
+                ssoArr : ["sso.jd.com","sso.jcloud.com","sso.jd.hk","sso.yiyaojd.com","sso.wangyin.com","sso.jdpay.com","sso.baitiao.com","sso.jdfcloud.com","sso.yixun.com","sso.jd-ex.com","sso.jdwl.com","sso.blackdragon.com","sso.ocwms.com","ssa.7fresh.com","sso.tjjt360.com","sso.jclps.com","sso.jdcloud.com","signin.joybuy.com","signin.jd.ru","signin.jd.id","signin.joybuy.es","sso.jdworldwide.com","sso.jkcsjd.com","sso.healthjd.com","jdsso.allianz.cn","sso.jdyunxiang.com","sso.wuliujie.com","sso.jingxi.com","sso.buyjingxi.com","sso.allianz360.com","sso.jyhcjd.com","sso.logiseasy.com","sso.chinabank.com.cn","sso.jdlearn.com.cn","sso.jdl.cn","ssa.jdl.cn","sso.jdl.com","sso.jhscm.com","sso.jdbusiness.com","sso.vipmro.com","ssa.zhongyouex.com","sso.jdallianz.com","sso.vipmro.net","sso.duolabao.com","sso.51epei.com","sso.five-star.cn","sso.yunpei.com","sso.yunxiu.com","sso.dd-advisor.com","sso.ybscjp.com","ssa.7fresh.com","sso.jdh.com","sso.jddj.com","sso.jingdong.com"]
+            };
+            window.ParamsSign = ParamsSign;
+        });
+        window.firstShowAccountLoginPage =  true ;
+        window.firstShowAccountLoginTab =  true ;
+        window.closeHistoryAccountLogin =  true ;
+    </script>
+        </head>
+<body>
+<input type="hidden" id="pageSource" name="pageSource" value="login2023"/>
+<input type="hidden" id="pageLocation" name="pageLocation" value="https://passport.jd.com/"/>
+
+<!-- SDK 登录 -->
+<div class="w">
+    <div id="logo">
+        <a href="//www.jd.com/" clstag="pageclick|keycount|20150112ABD|45">
+            <img src="//misc.360buyimg.com/lib/img/e/logo-201305-b.png" alt="京东" width="170" height="60">
+        </a>
+        <b></b>
+    </div>
+            <a href="//wj-dongjian.jd.com/q/61a05143f2ec2b00b35e40a6" target="_blank" clstag="pageclick|keycount|passport_main|click_inves_qusetion" class="q-link"><b></b>登录页面，调查问卷</a>
+    </div>
+<div id="content">
+    <div class="login-wrap">
+        <div class="w">
+
+            <div class="login-form-border">
+
+                <div class="login-form" style="opacity: 0">
+
+
+                                            <!-- nothing here -->
+                    
+                    <div class="login-form-body">
+
+                        <div class="login-tab login-tab-l">
+                            <a href="javascript:void(0)" clstag="pageclick|keycount|passport_main|click_qrcode_login"></a>
+                        </div>
+                        <div class="login-tab login-tab-r">
+                            <a href="javascript:void(0)"
+                               clstag="pageclick|keycount|passport_main|click_account_pwd_login"></a>
+                        </div>
+
+                        <div class="login-box">
+
+                     <span class="tooltip-left qrcode-guide-tooltip"
+                           style="visibility: visible;opacity: 1">扫码登录安全快捷</span>
+
+
+                            <div class="form-login-type-toggle">
+
+                                <div id="pwd-login" class="form-login-type  select-toggle ">
+                                    <!-- 账号密码登录组件 -->
+                                    密码登录
+                                </div>
+
+                                <div id="sms-login" class="form-login-type  ">
+                                    <!-- 短信登录组件 -->
+                                    短信登录
+                                </div>
+                            </div>
+
+
+                            <div class="mc">
+                                <div class="form">
+                                    <form id="formlogin"  style="display:block ;"  method="post" onsubmit="return false;">
+                                        <input type="hidden" id="sa_token" name="sa_token" value="B68C442BE645754F33277E701208059080DD726A94A73F76DEC3053A838549C06EB7D3797CE1C5BBE7C2B2EF9CA7D467C3C76FF0A28885EE64B432120BA9B13D348C69B7D2A54084AD0AF9F604987E3FF4F05CFA833594DEAA638A1460132F8E4FC41F9984A0550F77FF3A51047D9FFA6937B2323ADE6CDB3A98776094AD46AFC0D104BE5A33FD4B2D219E65930F424CA62E9A76B0553DAFABE006ED3256B130266A76FAF5CCE3ADAB479A1B91EBE72CBDB5C907636213D093ECD5598DF5F765D5B5DCE6C229DF388ACB202FDF277EAF5221933066B4930DEB68365FC10B397F1E63DD34FE749ED7E1EF9EB40F0ED6AC76204F20B9944A255B8A841F2D9786602E11FC79DC1BD11892E72FD46A84E9C802AD5EE5C4EADDF034C321E7DEC478E2067E98A672DC1BA9C78082D04622EB2E7CB12F6E79BF0A6E77AF96562EDB2C13134C4C896CA18F212EF44982A7B65CAFA3C2C777B4EB3BE6DA4D3FFF8DD5B44C34A26DAAC807979BAFB84EBB7CF6BE3F48587CD018AD1DCBEC45E106899C10DDA62E48E15770D97FFF088831EAA7F3CB86AFD8B4F08914F0091E149AE7B46AEE74CA23F15736CF67AA5B87D656113484F5B9C89A465CA7FBA3860EDFE3758719ACA0794CA5F99BD5D4CC342AB6199D18"/>
+                                        <input type="hidden" id="uuid" name="uuid" value="cab92c15-2561-4935-8a04-90dbafeddfc8"/>
+                                        <input type="hidden" name="eid" id="eid" value="" class="hide"/>
+                                        <input type="hidden" name="fp" id="sessionId" value="" class="hide"/>
+                                        <input type="hidden" name="_t" id="token" value="_t" class="hide"/>
+                                        <input type="hidden" name="loginType" id="loginType" value="f"
+                                               class="hide"/>
+                                        <input type="hidden" name="main_flag" id="main_flag" value="main_flag"
+                                               class="hide"/>
+                                        <input type="hidden" name="pubKey" id="pubKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC7kw8r6tq43pwApYvkJ5laljaN9BZb21TAIfT/vexbobzH7Q8SUdP5uDPXEBKzOjx2L28y7Xs1d9v3tdPfKI2LR7PAzWBmDMn8riHrDDNpUpJnlAGUqJG9ooPn8j7YNpcxCa1iybOlc2kEhmJn5uwoanQq+CA6agNkqly2H4j6wIDAQAB" class="hide"/>
+                                        <input type="hidden" id="slideAppId" value="1604ebb2287" class="hide">
+                                        <input type="hidden" name="useSlideAuthCode" id="useSlideAuthCode"
+                                               value="1" class="hide">
+                                        <input type="hidden" name="firstShowAccountLoginPage" id="firstShowAccountLoginPage"
+                                               value="f" class="hide">
+                                                                                <div class="item item-fore1">
+                                            <input id="loginname"
+                                                   clstag="pageclick|keycount|passport_main|click_input_loginname"
+                                                   type="text"
+                                                   class="itxt" name="loginname" tabindex="1" _input="true"
+                                                   autocomplete="off"
+                                                                                                   value=""
+                                                                                                   placeholder="邮箱/账号名/登录手机"/>
+                                            <span class="clear-btn"></span>
+                                        </div>
+
+                                        <div id="entry" class="item item-fore2">
+                                            <input type="password" clstag="pageclick|keycount|passport_main|click_input_pwd"
+                                                   id="nloginpwd" name="nloginpwd" class="itxt itxt-error"
+                                                   tabindex="2" autocomplete="off" _input="true" placeholder="密码"/>
+                                            <span class="clear-btn"></span>
+                                            <span class="capslock"><b></b>大小写锁定已打开</span>
+                                        </div>
+
+                                                                                                                                                                                                        
+                                        <div id="o-authcode"
+                                             class="item item-vcode item-fore3  hide ">
+                                            <input id="authcode" type="text" class="itxt itxt02" name="authcode"
+                                                   clstag="pageclick|keycount|passport_main|click_input_image_code"
+                                                   tabindex="3">
+                                            <img id="JD_Verification1" class="verify-code"
+                                                 clstag="pageclick|keycount|passport_main|click_image_code"
+                                                                                                 src2="//authcode.jd.com/verify/image?srcid=passport&amp;a=1&amp;acid=cab92c15-2561-4935-8a04-90dbafeddfc8&amp;uid=cab92c15-2561-4935-8a04-90dbafeddfc8"
+                                                                                                 onclick="this.src= document.location.protocol +'//authcode.jd.com/verify/image?srcid=passport&amp;a=1&amp;acid=cab92c15-2561-4935-8a04-90dbafeddfc8&amp;uid=cab92c15-2561-4935-8a04-90dbafeddfc8&amp;yys='+new Date().getTime();$('#authcode').val('');"/>
+                                            <a href="javascript:void(0)" onclick="$('#JD_Verification1').click();"
+                                               clstag="pageclick|keycount|passport_main|click_image_code_not_clear">看不清换一张</a>
+                                        </div>
+
+                                        <div class="msg-wrap">
+                                            <div class="msg-error hide pwd-login-err-msg"><b></b></div>
+                                        </div>
+
+                                        <div class="item item-fore4">
+
+
+                                            <div class="safe choose-parent">
+                                                <div class="choose-child hover-element"  style="display: none ;">
+
+                                                    <label>
+                                                        <input id="rememberMe" type="checkbox">
+                                                        <span></span>记住我
+                                                    </label>
+
+                                                    <span class="tooltip-bottom remember-me-tooltip">
+                                                            <p>勾选“记住我”后，系统会保存当前登录的账号信息，下次在该设备上登录当前账号，可通过“历史账号”点击当前账号信息一键免密登录。</p>
+                                                    </span>
+
+                                                </div>
+                                                <div id="go-history-login-btn" class="choose-child" style="display: none ;">历史账号</div>
+                                                <div class="forget-pw-safe choose-child">
+                                                    <a href="//passport.jd.com/uc/links?tag=safe" class="" target="_blank"
+                                                       clstag="pageclick|keycount|passport_main|click_forget_pwd">忘记密码</a>
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="item item-fore5">
+                                            <div class="login-btn submit-btn submit-btn-disable">
+                                                <a href="javascript:;" class="btn-img btn-entry" id="loginsubmit"
+                                                   tabindex="6"
+                                                   _submit="true"
+                                                   clstag="pageclick|keycount|passport_main|click_login_submit_button">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div id="sms-login-form" style="display:  none ;">
+
+                                        <div>
+                                            <!--手机号码、验证码输入框主体-->
+
+                                            <form id="smslogin"  method="post" onsubmit="return false;">
+                                                <div class="phone-input">
+
+                                                    <div class="area-code">
+                                                        <span id="area-code-value">+86</span>
+                                                        <span id="area-code-icon">
+                                                            <svg width="8" height="4" viewBox="0 0 8 4" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                      d="M0.295756 1.5128C0.0101637 1.34554 -0.0850334 0.979175 0.082962 0.694842C0.250957 0.410509 0.618547 0.315732 0.904139 0.482986C1.93611 1.08749 2.96808 1.6916 4.00005 2.2961C5.03162 1.6916 6.06359 1.08749 7.09557 0.482987C7.38116 0.315732 7.74915 0.41051 7.91714 0.694842C8.08514 0.979175 7.98954 1.34554 7.70395 1.5128C6.57078 2.17664 5.43721 2.84008 4.30404 3.50392C4.08445 3.63255 3.91525 3.63255 3.69566 3.50392C2.56249 2.84008 1.42892 2.17664 0.295756 1.5128Z"
+                                                                      fill="#757575"/>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="hover-element">
+                                                        <input type="number" pattern="\d*" id="mobile-number" maxlength="30"
+                                                               name="mobileNumber"
+                                                               placeholder="请输入手机号" value="">
+                                                        <!--
+                                                        <span class="history-mobile-select-tooltip tooltip-bottom">
+                                                                <p>手机号码</p>
+                                                        </span>
+                                                         -->
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="sms-box-error-msg mobile-input-notice" style="display: none">
+                                                    请输入手机号
+                                                </div>
+
+                                                <div class="captcha-input">
+                                                    <input class="captcha-code" type="text" id="sms-code" maxlength="6"
+                                                           name="smsCode"
+                                                           placeholder="请输入验证码">
+                                                    <button id="send-sms-code-btn" disabled>获取验证码</button>
+                                                </div>
+                                                                                                    <div class="slide-authCode-wraper">
+                                                        <a class="arrow"></a>
+                                                        <a class="close"></a>
+                                                        <div id="slideAuthCode" class="JDValidate-wrap"></div>
+                                                    </div>
+                                                                                                <div class="sms-box-error-msg">
+
+                                                </div>
+
+                                                <div class="sms-login-submit-box">
+                                                    <!-- 登录按钮 -->
+                                                    <button id="sms-login-submit" disabled
+                                                            class="submit-btn submit-btn-disable">登&nbsp;&nbsp;&nbsp;&nbsp;录
+                                                    </button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qrcode-login">
+                        <div class="mc">
+                            <div class="qrcode-error-2016">
+                                <div class="qrcode-error-mask">
+                                </div>
+                                <p class="err-cont">服务器出错</p>
+                                <a href="javascript:void(0)" class="refresh-btn" clstag="pageclick|keycount|passport_main|click_qrcode_refresh">刷新</a>
+                            </div>
+                            <div class="qrcode-main">
+                                <div class="qrcode-img">
+                                    <img id="passport-main-qrcode-img" src="//qr.m.jd.com/show?appid=133&size=147&t=" alt="" exptag="pageexp|keycount|passport_main|export_qrcode">
+                                </div>
+                                <div class="qrcode-help" style="display: none; "></div>
+                            </div>
+                            <div class="qrcode-panel">
+                                <ul>
+                                    <li class="fore1">
+                                        <span>打开</span>
+                                        <a href="/uc/links?tag=apps" target="_blank"
+                                           clstag="pageclick|keycount|passport_main|click_my_jd">
+                                            <span class="red">手机京东</span></a>
+                                    </li>
+                                    <li>扫描二维码</li>
+                                </ul>
+                            </div>
+                            <div class="coagent qr-coagent" id="qrCoagent">
+                                <ul>
+                                    <li><b></b><em>免输入</em></li>
+                                    <li><b class="faster"></b><em>更快&nbsp;</em></li>
+                                    <li><b class="more-safe"></b><em>更安全</em></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                                 <div class="coagent" id="kbCoagent">
+                    <ul>
+                        						                        <li>
+                            <b></b>
+                            <a href="javascript:void(0)"
+                               onclick="qqLogin();return false;"
+                               clstag="pageclick|keycount|passport_main|click_qq_login" class="pdl"><b
+                                    class="QQ-icon"></b><span>QQ</span></a>
+                                                        <span class="line">|</span>
+                                                    </li>
+                        <script type="text/javascript">
+                            function qqLogin() {
+                                let suffix = window.location.search;
+                                if (suffix.startsWith("?")) {
+                                    suffix = window.location.search + "&eq=" + $("#eid").val();
+                                }else {
+                                    suffix = "?eq=" + $("#eid").val();
+                                }
+                                window.location = "//qq.jd.com/new/qq/login.aspx" + suffix + "&ps=passport&pst=c";
+                            }
+                        </script>
+                                                                        <li>
+                            <a href="javascript:void(0)"
+                               onclick="wxLogin();return false;"
+                               clstag="pageclick|keycount|passport_main|click_wx_login" class="pdl"><b
+                                    class="weixin-icon"></b><span>微信</span></a>
+								                        </li>
+                        <script type="text/javascript">
+                            function wxLogin() {
+                                let suffix=window.location.search;
+                                if (suffix.startsWith("?")) {
+                                    suffix = window.location.search + "&eq=" + $("#eid").val();
+                                } else {
+                                    suffix = "?eq=" + $("#eid").val();
+                                }
+                                window.location = "//qq.jd.com/new/wx/login.aspx" + suffix + "&ps=passport&pst=c";
+                            }
+                        </script>
+                                                                                                <li class="extra-r">
+                            <div>
+                                                                    <div class="regist-link"><a
+                                            href="//reg.jd.com/p/regPage?ignore=1"
+                                            clstag="pageclick|keycount|passport_main|click_quick_register"
+                                            target="_blank"><b></b>立即注册</a></div>
+                                                            </div>
+                        </li>
+                    </ul>
+                </div>                </div>
+
+            </div>
+        </div>
+        <div class="login-banner" clstag="pageclick|keycount|passport_main|click_ad_content">
+            <div class="w">
+                <div id="banner-bg" class="i-inner"
+                                         style="background: url(/new/misc/2015/background.png) 0px 0px no-repeat;"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="w">
+    <div id="footer-2013">
+        <div class="links">
+            <a rel="nofollow" target="_blank" href="//about.jd.com/">
+                关于我们
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//www.jd.com/contact/">
+                联系我们
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">
+                人才招聘
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//lai.jd.com/">
+                商家入驻
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//jzt.jd.com/">
+                广告服务
+            </a>
+            |
+            <a rel="nofollow" target="_blank" href="//app.jd.com/">
+                手机京东
+            </a>
+            |
+            <a target="_blank" href="//club.jd.com/links.aspx">
+                友情链接
+            </a>
+            |
+            <a target="_blank" href="//media.jd.com/">
+                销售联盟
+            </a>
+            |
+            <a href="//pro.jd.com/mall/active/3WA2zN8wkwc9fL9TxAJXHh5Nj79u/index.html" target="_blank">
+                京东社区
+            </a>
+            |
+            <a href="//gongyi.jd.com" target="_blank">
+                京东公益
+            </a>
+        </div>
+        <div class="copyright">
+            Copyright&nbsp;&copy;&nbsp;2004-2023&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+        </div>
+    </div>
+</div><script type="text/javascript" src="//misc.360buyimg.com/jdf/1.0.0/unit/base/1.0.0/base.js"></script>
+        <script type="text/javascript" src="/new/js/jdJsencrypt.min.js"></script>
+    
+<script language="javascript" type="text/javascript" >
+    seajs.config({
+        comboExcludes: function(uri) {
+            if (uri.indexOf('jdc_user_passport') > 0) {
+                return true;
+            }
+        }
+    });
+    window.logType1=window.ziwuxian.LOG_TYPE1.PASSPORT_MAIN;
+</script>
+
+
+<script type="text/javascript" charset="UTF-8"  src="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/js/login.index.2023.js" source="widget" charset="utf-8"></script>
+<script type="text/javascript" charset="UTF-8"  src="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/js/new/misc/js/login2023.js"></script>
+            <script type="text/javascript">
+    (function () {
+        var ja = document.createElement('script');
+        ja.type = 'text/javascript';
+        ja.async = true;
+        ja.src = document.location.protocol +'//wl.jd.com/wl.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ja, s);
+    })();
+</script>
+<script src="//gias.jd.com/js/td.js"></script>
+<script language="JavaScript">
+    function loginGetEid(count) {
+        if(count >= 4) {
+            return;
+        }
+        try {
+            if(typeof(getJdEid) == "function") {
+                getJdEid(function(eid,fp,udfp){
+                    $("#eid").prop("value", eid);
+                    $("#sessionId").prop("value", fp);
+                });
+            } else {
+                count ++;
+                setTimeout('loginGetEid('+count+')', 300);
+            }
+        }catch(e){
+            $("#eid").prop("value", "unknown");
+            $("#sessionId").prop("value", "unknown");
+        }
+    }
+
+    setTimeout('loginGetEid(0)', 1000);
+</script>
+<script type="text/javascript" src="//seq.jd.com/jseqf.html?bizId=passport_jd_com_login_pc&platform=js&version=1"></script>
+
+<!-- SDK 登录 -->
+</body>
+
+</html>
+
+
+<link type="text/css" rel="stylesheet" href="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/css/login.css">
+<script type="text/javascript" charset="UTF-8" src="//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/js/newLogin/login.js"></script>
+<script language="javascript" type="text/javascript" >
+    seajs.use('//storage.jd.com/retail-mall/jdc_user_passport/pc/user/passport/1.0.12/js/newLogin/mobileLogin.js', function (login) {
+        login.init();
+    })
+</script>
+
+<script>
+    // 设置opacity为1
+    setTimeout(function () {
+        $('.login-form').css('opacity', 1);
+    }, 2000);
+</script>

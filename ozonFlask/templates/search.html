@@ -1,0 +1,125 @@
+<!-- <!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>搜索SKU</title>
+</head>
+
+<body>
+    <form action="/search" method="post">
+        <label for="sku_ids">输入SKU ID（每个ID一行）:</label>
+        <textarea id="sku_ids" name="sku_ids" rows="10" cols="30"></textarea>
+        <button type="submit">搜索</button>
+    </form>
+    <h1>搜索</h1>
+    
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <style>
+        .search-container {
+            display: flex;
+            /* 使用Flexbox布局 */
+            justify-content: start;
+            /* 子元素向行首对齐 */
+            align-items: flex-start;
+            /* 子元素顶部对齐 */
+            gap: 20px;
+            /* 子元素之间的间隔 */
+        }
+
+        .search_all {
+            display: flex;
+            /* 使用Flexbox布局 */
+            justify-content: start;
+            /* 子元素向行首对齐 */
+            align-items: flex-start;
+            /* 子元素顶部对齐 */
+            gap: 20px;
+            /* 子元素之间的间隔 */
+        }
+
+        .search-box {
+            margin: 0;
+        }
+
+        .search-box label,
+        .search-box button {
+            display: block;
+            /* 使标签和按钮各占一行 */
+            margin-bottom: 10px;
+            /* 添加一些间距 */
+        }
+
+        .search-box textarea {
+            width: 100%;
+            /* 宽度填满父元素 */
+            box-sizing: border-box;
+            /* 包括padding和border在内的宽度 */
+        }
+    </style>
+</head>
+<!-- 
+<form action="/search" method="post">
+    <label for="sku_ids">输入SKU ID（每个ID一行）:</label>
+    <textarea id="sku_ids" name="sku_ids" rows="10" cols="30"></textarea>
+    <button type="submit">搜索</button>
+</form>
+<h1>搜索</h1> -->
+
+<body>
+    <div class="search-container">
+        <!-- 原有的搜索框 -->
+        <div class="search-box">
+            <form action="/search" method="post">
+                <label for="sku_ids">输入SKU ID（每个ID一行）:</label>
+                <textarea id="sku_ids" name="sku_ids" rows="10" cols="30"></textarea>
+                <button type="submit">搜索SKU</button>
+            </form>
+        </div>
+
+        <!-- 新的搜索框 -->
+        <div class="search-box">
+            <form action="/search" method="post">
+                <label for="search_text">输入SearchText:</label>
+                <!-- <input type="text" id="search_text" name="search_text" placeholder="搜索词"> -->
+                <textarea id="search_text" name="search_text" rows="10" cols="30"></textarea>
+                <button type="submit">搜索文本</button>
+            </form>
+        </div>
+    </div>
+    <div class="search_all">
+        <form action="{{ url_for('search') }}" method="post">
+            <div>
+                <label for="skuId">SKU ID:</label>
+                <!-- <input type="text" id="skuId" name="skuId" placeholder="输入SKU ID" rows="10" cols="30"> -->
+                <textarea id="skuId1" name="skuId1" rows="10" cols="30"></textarea>
+
+            </div>
+            <div>
+                <label for="SearchText">搜索词:</label>
+                <!-- <input type="text" id="SearchText" name="SearchText" placeholder="输入搜索词" rows="10" cols="30"> -->
+                <textarea id="search_text1" name="search_text1" rows="10" cols="30"></textarea>
+            </div>
+            <div>
+                <button type="submit">提交搜索</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- <h1>搜索结果</h1> -->
+    <!-- 搜索结果的展示 -->
+    <!-- ... -->
+</body>
+
+</html>

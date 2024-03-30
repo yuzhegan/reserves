@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据展示</title>
+    <style>
+        /* 分页控件和每页显示条目数的表单的样式 */
+        .pagination-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            /* 确保分页控件在其他内容之上 */
+        }
+
+        .fixed-header {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 10;
+        }
+
+        img {
+            width: 150px;
+            /* 根据需要调整图片大小 */
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead class="fixed-header">
+            <tr>
+                <th>Image</th>
+                <th>skuId</th>
+                <th>brand</th>
+                <th>SearchText</th>
+                <th>title</th>
+                <th>price</th>
+                <th>sales</th>
+                <th>logisticsCost</th>
+                <th>supplierRating</th>
+                <th>feedbacks</th>
+                <th>adcpm</th>
+                <th>adpromoPosition</th>
+                <th>rating</th>
+                <th>reviews</th>
+                <!-- <th>MaxAddToCart</th> -->
+                <th>page</th>
+                <th>rank</th>
+                <th>pageRank</th>
+                <th>devileveyDay</th>
+                <th>SearchDate</th>
+                <!-- 其他列标题 -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td><img src="{{ item.Imageurl }}" alt="Image"></td>
+                <td><a href="{{ item.url }}">{{ item.skuid }}</a></td>
+                <td>{{ item.brand }}</td>
+                <td>{{ item.search_text }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.salePriceU }}</td>
+                <td>{{ item.sale }}</td>
+                <td>{{ item.logisticsCost }}</td>
+                <td>{{ item.supplierRating }}</td>
+                <td>{{ item.feedbacks}}</td>
+                <td>{{ item.adcpm }}</td>
+                <td>{{ item.adpromoPosition }}</td>
+                <td>{{ item.rating }}</td>
+                <td>{{ item.reviewRating }}</td>
+                <!-- <td>{{ item.MaxAddToCart }}</td> -->
+                <td>{{ item.page }}</td>
+                <td>{{ item.rank }}</td>
+                <td>{{ item.pageRank }}</td>
+                <td>{{ item.devileveyDay }}</td>
+                <td>{{ item.searchDate}}</td>
+                <!-- 其他数据列 -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- 分页控件和每页显示条目数的表单 -->
+    <!-- <div class="pagination-container">
+        <form action="/" method="get">
+            <select name="per_page" onchange="this.form.submit()">
+                <option value="50" {% if per_page==50 %}selected{% endif %}>每页50条</option>
+                <option value="100" {% if per_page==100 %}selected{% endif %}>每页100条</option>
+                <option value="200" {% if per_page==200 %}selected{% endif %}>每页200条</option>
+            </select>
+        </form>
+        <button onclick="location.href='/download'">下载Excel文件</button>
+        {% if page > 1 %}
+        <a href="{{ url_for('search', page=page-1, per_page=per_page) }}">上一页</a>
+        {% endif %}
+
+        {% if page < total_pages %} <a href="{{ url_for('search', page=page+1, per_page=per_page) }}">下一页</a>
+            {% endif %}
+    </div> -->
+
+    <div class="pagination-container">
+        <!-- 更改每页显示条目数的表单 -->
+        <form action="{{ url_for('result') }}" method="get">
+            <select name="per_page" onchange="this.form.submit()">
+                <option value="50" {% if per_page==50 %}selected{% endif %}>每页50条</option>
+                <option value="100" {% if per_page==100 %}selected{% endif %}>每页100条</option>
+                <option value="200" {% if per_page==200 %}selected{% endif %}>每页200条</option>
+            </select>
+        </form>
+
+        <!-- 下载按钮 -->
+        <button onclick="location.href='/download'">下载Excel文件</button>
+
+        <!-- 分页按钮 -->
+        {% if page > 1 %}
+        <a href="{{ url_for('result', page=page-1, per_page=per_page) }}">上一页</a>
+        {% endif %}
+
+        {% if page < total_pages %} <a href="{{ url_for('result', page=page+1, per_page=per_page) }}">下一页</a>
+            {% endif %}
+    </div>
+
+
+</body>
+
+</html>
