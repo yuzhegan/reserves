@@ -11,7 +11,7 @@
 # MYSQL_USER_PASS = "1234"
 
 # MONGODB
-MONGO_IP = "172.28.48.1"
+MONGO_IP = "192.168.3.41"
 MONGO_PORT = 27017
 MONGO_DB = "ozon"
 MONGO_USER_NAME = ""
@@ -19,7 +19,7 @@ MONGO_USER_PASS = ""
 
 # REDIS
 # ip:port 多个可写为列表或者逗号隔开 如 ip1:port1,ip2:port2 或 ["ip1:port1", "ip2:port2"]
-REDISDB_IP_PORTS = "172.28.48.1:6379"
+REDISDB_IP_PORTS = "192.168.3.41:6379"
 REDISDB_USER_PASS = ""
 REDISDB_DB = 0
 # # 适用于redis哨兵模式
