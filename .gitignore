@@ -1,0 +1,36 @@
+#--------------------------------------------------#
+# The following was generated with gitignore.nvim: #
+#--------------------------------------------------#
+# Gitignore for the following technologies: Python
+
+# Byte-compiled / optimized / DLL files
+/*
+/*/
+/*/__pycache__/
+/*/__MACOSX/
+/*/*.xlsm
+
+
+
+
+
+# Distribution / packaging
+
+
+!/.gitignore
+!/dangdang/
+!/honglifang/
+!/jdlogin/
+!/node_modules/
+!/ozon/
+!/ozon2mango/
+!/ozon_async_process/
+!/ozonFeapder/
+!/ozonFlask/
+!/ozon_imgdown/
+!/taobao/
+!/tianwentai/
+!/wb2mango/
+!/wbFlask/
+!/wildberries/
+
