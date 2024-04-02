@@ -7,8 +7,12 @@
 /*
 /*/
 /*/__pycache__/
+/*/*/__pycache__/
+/*/*/*/__pycache__/
 /*/__MACOSX/
+/*/*/__MACOSX/
 /*/*.xlsm
+*~$*.xlsx
 
 
 
@@ -23,6 +27,8 @@
 !/jdlogin/
 !/node_modules/
 !/ozon/
+!/ozonApi/
+!/ozon_1/
 !/ozon2mango/
 !/ozon_async_process/
 !/ozonFeapder/
