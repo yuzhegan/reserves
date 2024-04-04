@@ -131,15 +131,14 @@ class Ozon_Spider:
         return
 
     def ozonSearchV3(self, cookies, headers):
-        headers['x-o3-app-name'] ='seller-ui'
-        headers['x-o3-company-id'] = '1654428'
+        headers['x-o3-app-name'] = 'seller-ui'
+        headers['x-o3-company-id'] = '1501369'
         headers['x-o3-language'] = 'zh-Hans'
-        cookies['__Secure-access-token'] = '4.153179496.fWFCUm3hQxWjn82auRWFGw.62.Aeyb9s_i6DDjCBnmh8WgpkP2qrgoLj-je21cG-Q7nxOSuTmkIIiAQf74fW150MquMFJnmnCk1s-wb2novDTlf8U.20240115055703.20240404080548.I92izmmw5bssM5JxQ-EyKM-UHVbKaGJ_ByHBliEukVE'
-
+        cookies['__Secure-access-token'] = '4.160357014.AA3RT3XZSMKpkQ4IQsZqJg.91.AdIXaoj-NVGgqL3b8I60BWocNwDdnA4yQY7tI9RiaZXJIqAyvekip__JRgjiOviovY3qTYbxY9sFJWbdqqjJ3qU.20240402125018.20240404120743.RGPQ2ombt7qBZK8yBHOrPTlB90arSX9fNXJO83T4Gy0'
         json_data = {
             'filter': {
                 'stock': 'any_stock',
-                'sku': '1391085741',
+                'name': '925316216',
             },
             'sort': {
                 'key': 'sum_rating',

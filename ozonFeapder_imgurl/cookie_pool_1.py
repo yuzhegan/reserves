@@ -3,7 +3,6 @@
 # @Time: 2024-01-14
 # @File: %
 #!/usr/bin/env
-
 from icecream import ic
 import os
 from curl_cffi import requests
@@ -59,10 +58,10 @@ class GenCookie(object):
         ic(ua)
         self.headers['user-agent'] = UserAgent().random
         # self.session.headers.update(self.headers)
-        response = self.session.get('https://seller.ozon.ru/app/dashboard/main',
+        response = self.session.get('https://www.ozon.ru/',
                                     impersonate=ua, headers=self.headers, timeout=30,
                                     )
-        response = self.session.post('https://seller.ozon.ru/abt/result',
+        response = self.session.post('https://www.ozon.ru/abt/result',
                                     impersonate=ua, headers=self.headers, timeout=30,
                                     )
         if "abt_data" not in response.cookies:
@@ -135,4 +134,3 @@ class GenCookie(object):
 # if __name__ == '__main__':
 #     gen_cookie = GenCookie()
 #     gen_cookie.gen_cookie()
-

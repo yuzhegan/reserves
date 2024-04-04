@@ -12,7 +12,7 @@ from curl_cffi import requests
 import time
 from lxml import etree
 import json
-from feapder import Item, UpdateItem 
+from feapder import Item, UpdateItem
 from parseData import parseData
 import random
 import polars as pl
@@ -42,6 +42,7 @@ class OzonSpider(feapder.Spider):
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
     }
+    accessToken = '4.160357014.AA3RT3XZSMKpkQ4IQsZqJg.91.AdIXaoj-NVGgqL3b8I60BWocNwDdnA4yQY7tI9RiaZXJIqAyvekip__JRgjiOviovY3qTYbxY9sFJWbdqqjJ3qU.20240402125018.20240404120743.RGPQ2ombt7qBZK8yBHOrPTlB90arSX9fNXJO83T4Gy0'
 
     # 这种方式获取的cookies 需要科学
     file_path = './ozonFeapder_imgurl/data.xlsx'
@@ -49,50 +50,83 @@ class OzonSpider(feapder.Spider):
     df = rd.df
     ws = rd.ws
 
-
     def start_requests(self):
         gencookies = GenCookie()  # 实例化可以更换各个地方的cookie
         self.cookies, self.ua, self.headers = gencookies.gen_cookie()
+        self.headers['x-o3-app-name'] = 'seller-ui'
+        self.headers['x-o3-company-id'] = '1501369'
+        self.headers['x-o3-language'] = 'zh-Hans'
+        self.cookies['__Secure-access-token'] = self.accessToken
+
+        url = 'https://seller.ozon.ru/api/site/seller-analytics/what_to_sell/data/v3'
         for index, row in self.df.iterrows():
-            url = row['商品链接']
-            time.sleep(1)
-            yield feapder.Request(url = url,
-                                  method="GET",
-                                  headers=self.headers,
+            id = row['ID']   # 这里的url是商品的ID
+            print("获取商品ID：", id)
+            json_data = {
+                'filter': {
+                    'stock': 'any_stock',
+                    'name': str(id),
+                },
+                'sort': {
+                    'key': 'sum_rating',
+                },
+                'limit': '50',
+                'offset': '0',
+            }
+
+            yield feapder.Request(url,
+                                  method="POST",
+                                  # headers=self.headers,
+                                  # cookies=self.cookies,
                                   download_midware=self.download_midware2,
                                   callback=self.parse_list,
-                                  meta = {
-                                      # 'index': index,
+                                  meta={
+                                      'json_data': json_data,
                                       'row': row.to_dict()
                                   }
                                   )
 
     def download_midware2(self, request):
-        url = request.url
-        response = self.session.get(url, 
-                                    headers=self.headers, impersonate=self.ua,
-                                    cookies=self.cookies,
-                                    timeout=30)
+        json_data = request.meta['json_data']
+
+        response = self.session.post('https://seller.ozon.ru/api/site/seller-analytics/what_to_sell/data/v3',
+                                    headers=self.headers,
+                                    json=json_data,
+                                    cookies=self.cookies)
         # with open('ozonfeapder.html', 'w') as f:
-        #     f.write(response.text)
+        #     f.write(response.text
 
         return request, response
 
     def parse_list(self, request, response):
         row = request.meta['row']
-        html = etree.HTML(response.text)
-        data = html.xpath('//link[@rel="preload"]/@href')
-        if not data:
-            data = html.xpath('//div[@class="rj"]/img/@src')
-            if not data:
-                data = html.xpath('//div[@class="jn6 j6n"]//img/@src')
-        imgurl = data[0] if data else ''
+        # print(response.json())
+        try:
+            data = response.json()['items'][0]
+            row['avgDeliveryDays'] = data['avgDeliveryDays']
+            row['avgGmv'] = data['avgGmv']
+            row['avgGmvOnAccDays'] = data['avgGmvOnAccDays']
+            row['avgOrdersOnAccDays'] = data['avgOrdersOnAccDays']
+            row['avgPricel'] = data['avgPrice']
+            row['createDate'] = data['createDate']
+            row['daysInStock'] = data['daysInStock']
+            row['fboStock'] = data['fboStock']
+            row['gmvSum'] = data['gmvSum']
+            row['minSellerPrice'] = data['minSellerPrice']
+            row['salesSchema'] = data['salesSchema']
+            row['sellerId'] = data['sellerId']
+            row['soldCount'] = data['soldCount']
+            row['soldSum'] = data['soldSum']
+            row['图片连接'] = data['photo']
+            print("获取图片连接：", data['photo'])
+
+        except Exception as e:
+            print(e)
+            print('数据获取失败')
         item = Item()
-        item['图片连接'] = imgurl
         for k, v in row.items():
             item[k] = v
         yield item
-
 
 
 if __name__ == "__main__":
