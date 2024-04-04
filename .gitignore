@@ -21,6 +21,7 @@
 # Distribution / packaging
 
 
+!/ozonFeapder_imgurl/
 !/.gitignore
 !/dangdang/
 !/honglifang/

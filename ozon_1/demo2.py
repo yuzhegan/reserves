@@ -170,7 +170,7 @@ class Ozon_Spider:
             'offset': '0',
         }
 
-        response = requests.post(
+        response = self.session.post(
             'https://seller.ozon.ru/api/site/seller-analytics/what_to_sell/data/v3',
             cookies=cookies,
             headers=headers,

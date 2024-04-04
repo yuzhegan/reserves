@@ -14,6 +14,7 @@ from openpyxl.drawing.image import Image as OpenpyxlImage
 from openpyxl.utils import get_column_letter
 from PIL import Image
 from io import BytesIO
+import aiohttp
 import os
 from read_file import AsyncReadFile
 
@@ -26,35 +27,46 @@ class Ozon_Spider:
             # ... (same as before)
         }
 
-    async def searchResultsV2(self, cookies, ua, headers, session):
+    async def searchResultsV2(self, cookies, ua, headers, session, retry=3):
         print("searchResultsV2")
-        try:
-            response = await session.get(self.url, cookies=cookies, headers=headers, impersonate=ua, timeout=30)
-            html = etree.HTML(response.text)
-            data = html.xpath('//link[@rel="preload"]/@href')
-            if not data:
-                data = html.xpath('//div[@class="rj"]/img/@src')
+        for attempt in range(retry):
+            try:
+                response = await session.get(self.url, cookies=cookies, headers=headers, timeout=aiohttp.ClientTimeout(total=60))
+                html = etree.HTML(await response.text())
+                data = html.xpath('//link[@rel="preload"]/@href')
                 if not data:
-                    data = html.xpath('//div[@class="jn6 j6n"]//img/@src')
-            return data[0] if data else None
-        except Exception as e:
-            logging.error(f'Error getting image URL: {e}')
-            return None
-
-async def download_image(url, headers, index, session, image_data):
+                    data = html.xpath('//div[@class="rj"]/img/@src')
+                    if not data:
+                        data = html.xpath('//div[@class="jn6 j6n"]//img/@src')
+                return data[0] if data else None
+            except Exception as e:
+                logging.error(f'Attempt {attempt + 1} failed with error: {e}')
+                if attempt < retry - 1:
+                    await asyncio.sleep(2**attempt)  # Exponential backoff
+                else:
+                    logging.error(f'Error getting image URL after {retry} attempts: {e}')
+                    return None
+async def download_image(url, headers, index, session, image_data, retry=3):
     print("download_image")
-    try:
-        if url:
-            img_url = url.replace('wc50', 'wc1000').replace('wc10000', 'wc1000')
-            logging.info(f'Downloading image {index-1}: {img_url}')
-            response = await session.get(img_url, headers=headers, timeout=30)
-            img = Image.open(BytesIO(response.content))
-            img = img.resize((150, 150), Image.LANCZOS)
-            img_byte_arr = BytesIO()
-            img.save(img_byte_arr, format='PNG')
-            image_data[index] = (BytesIO(img_byte_arr.getvalue()), img_url)
-    except Exception as e:
-        logging.error(f'Error downloading image {index-1}: {e}')
+    for attempt in range(retry):
+        try:
+            if url:
+                img_url = url.replace('wc50', 'wc1000').replace('wc10000', 'wc1000')
+                logging.info(f'Downloading image {index-1}: {img_url}')
+                response = await session.get(img_url, headers=headers, timeout=aiohttp.ClientTimeout(total=60))
+                img = Image.open(BytesIO(await response.read()))
+                img = img.resize((150, 150), Image.LANCZOS)
+                img_byte_arr = BytesIO()
+                img.save(img_byte_arr, format='PNG')
+                image_data[index] = (BytesIO(img_byte_arr.getvalue()), img_url)
+                break  # 成功后退出循环
+        except Exception as e:
+            logging.error(f'Attempt {attempt + 1} to download image {index-1} failed with error: {e}')
+            if attempt < retry - 1:
+                await asyncio.sleep(2**attempt)  # Exponential backoff
+            else:
+                logging.error(f'Error downloading image {index-1} after {retry} attempts: {e}')
+
 
 async def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s')
