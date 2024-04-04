@@ -74,6 +74,7 @@ async def main():
     async with AsyncSession() as session:
         tasks = []
         for index, row in enumerate(df.itertuples(), start=2):
+            await asyncio.sleep(1)
             url = getattr(row, '商品链接')
             ozon_spider = Ozon_Spider(url)
             task = asyncio.create_task(ozon_spider.searchResultsV2(cookies, ua, headers, session))

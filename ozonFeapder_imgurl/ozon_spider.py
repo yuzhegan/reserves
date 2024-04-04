@@ -55,6 +55,7 @@ class OzonSpider(feapder.Spider):
         self.cookies, self.ua, self.headers = gencookies.gen_cookie()
         for index, row in self.df.iterrows():
             url = row['商品链接']
+            time.sleep(1)
             yield feapder.Request(url = url,
                                   method="GET",
                                   headers=self.headers,
