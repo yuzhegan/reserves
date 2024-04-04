@@ -138,7 +138,7 @@ class Ozon_Spider:
         json_data = {
             'filter': {
                 'stock': 'any_stock',
-                'name': '925316216',
+                'sku': '503746894',
             },
             'sort': {
                 'key': 'sum_rating',

@@ -65,7 +65,7 @@ class OzonSpider(feapder.Spider):
             json_data = {
                 'filter': {
                     'stock': 'any_stock',
-                    'name': str(id),
+                    'sku': str(id),
                 },
                 'sort': {
                     'key': 'sum_rating',
@@ -90,9 +90,9 @@ class OzonSpider(feapder.Spider):
         json_data = request.meta['json_data']
 
         response = self.session.post('https://seller.ozon.ru/api/site/seller-analytics/what_to_sell/data/v3',
-                                    headers=self.headers,
-                                    json=json_data,
-                                    cookies=self.cookies)
+                                     headers=self.headers,
+                                     json=json_data,
+                                     cookies=self.cookies)
         # with open('ozonfeapder.html', 'w') as f:
         #     f.write(response.text
 
