@@ -134,7 +134,7 @@ class Ozon_Spider:
         headers['x-o3-app-name'] = 'seller-ui'
         headers['x-o3-company-id'] = '1501369'
         headers['x-o3-language'] = 'zh-Hans'
-        cookies['__Secure-access-token'] = '4.160357014.AA3RT3XZSMKpkQ4IQsZqJg.91.AdIXaoj-NVGgqL3b8I60BWocNwDdnA4yQY7tI9RiaZXJIqAyvekip__JRgjiOviovY3qTYbxY9sFJWbdqqjJ3qU.20240402125018.20240404120743.RGPQ2ombt7qBZK8yBHOrPTlB90arSX9fNXJO83T4Gy0'
+        cookies['__Secure-access-token'] = '4.160357014.AA3RT3XZSMKpkQ4IQsZqJg.91.AdHWKHeKqdiPR9hlDDvF5BPt-UFBcmvfOw10dPzNByjPLSGjhuKGEY1nz7G4BB6VZSKV_A1T_siFGmF3ElXLu48.20240402125018.20240404160633.JDAVIAzPK18ISwi4_21y-i03VW8iFOl2maNZ6UE5gIk'
         json_data = {
             'filter': {
                 'stock': 'any_stock',

@@ -8,26 +8,29 @@ import os
 
 import requests
 
+
+import requests
+
 headers = {
     'Accept': '*/*',
     'Accept-Language': 'zh-CN,zh;q=0.9',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxNmViMTk3NzlhOTE0YzY3OTFmNGEwNWVmY2I0ZTUyMCIsIlNlc3Npb25JZCI6ImQwYzM4NDY2Y2E4MzRmNjc5OWZmNTdlYTMzNGE0YTA3IiwiUGxhdGZvcm0iOiJPem9uIiwiaWF0IjoxNzEyMjI3MDkwLCJuYmYiOjE3MTIyMjcwOTAsImV4cCI6MTcxMjI1NTg5MCwiaXNzIjoiZ29sZGVicmlkZ2Vfc3VzZXIiLCJhdWQiOiJnb2xhZGJyaWRnZV9hdXNlciJ9.v5d1R8wI-WsR7r5hMd6YJFuY2H-R6sNhl7vQuH6pCDc',
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiJiZGFlMzZmMDkzMDg0ZWEwOTA0YjVjNDI0YTg5YTBmNiIsIlNlc3Npb25JZCI6IjdlOGQ2OTU3NTYzNTQxNzI5MTdmMDE3MmE5YmQxZjZiIiwiUGxhdGZvcm0iOiJPem9uIiwiaWF0IjoxNzEyMjQ0MTY2LCJuYmYiOjE3MTIyNDQxNjYsImV4cCI6MTcxMjI3Mjk2NiwiaXNzIjoiZ29sZGVicmlkZ2Vfc3VzZXIiLCJhdWQiOiJnb2xhZGJyaWRnZV9hdXNlciJ9.lSdspoIblarzFVpoJaZ2ctiiX_S5oaY5lg8w71SE0h8',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
     'Origin': 'https://www.ozon.ru',
     'Pragma': 'no-cache',
-    'Referer': 'https://www.ozon.ru/product/prozhektor-svetodiodnyy-ulichnyy-generica-50vt-chernyy-981698198/?asb=CQxCPW2HJ%252FJKRoLN3W76iedtvkmEMeB0cWw1IML533I%253D&asb2=pnq2HJlDEn9RklQi-zFITft8gEw4WWycr_rtUtpfHve_2uk0v-5shC1mHxTHUMQWAEkox2G9311doPH9mgqD7A&avtc=1&avte=2&avts=1712227168&keywords=%D0%9F%D1%80%D0%BE%D0%B6%D0%B5%D0%BA%D1%82%D0%BE%D1%80&sh=1ZurcM_0bw',
+    'Referer': 'https://www.ozon.ru/product/otkryvashka-dlya-konservov-konservnyy-nozh-premium-631661610/?asb=hBooduaBh7Zkld%252FlcDCYf2dQQgRe4vd21PyuLjJSeO8%253D&asb2=fOQkh2NJAIWD5uA_wvZgdErVoBcPF82Eyq7H_Yw9H84EJQ0AoOOovUsGassvpiwajtnP_7RUcT2hsymruvVIpg&avtc=1&avte=2&avts=1712118106&keywords=%D0%9E%D1%82%D0%BA%D1%80%D1%8B%D0%B2%D0%B0%D0%BB%D0%BA%D0%B0&sh=UO8DFI8AuQ',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'cross-site',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"',
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120"',
     'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
+    'sec-ch-ua-platform': '"Linux"',
 }
 
 params = {
-    'skuids': '1233456827,467407375,1102273108',
+    'skuids': '1158366011',
     'culture': 'zh-CN',
 }
 

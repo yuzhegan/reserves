@@ -42,7 +42,7 @@ class OzonSpider(feapder.Spider):
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
     }
-    accessToken = '4.160357014.AA3RT3XZSMKpkQ4IQsZqJg.91.AdIXaoj-NVGgqL3b8I60BWocNwDdnA4yQY7tI9RiaZXJIqAyvekip__JRgjiOviovY3qTYbxY9sFJWbdqqjJ3qU.20240402125018.20240404120743.RGPQ2ombt7qBZK8yBHOrPTlB90arSX9fNXJO83T4Gy0'
+    accessToken = '4.160357014.AA3RT3XZSMKpkQ4IQsZqJg.91.AdHWKHeKqdiPR9hlDDvF5BPt-UFBcmvfOw10dPzNByjPLSGjhuKGEY1nz7G4BB6VZSKV_A1T_siFGmF3ElXLu48.20240402125018.20240404160633.JDAVIAzPK18ISwi4_21y-i03VW8iFOl2maNZ6UE5gIk'
 
     # 这种方式获取的cookies 需要科学
     file_path = './ozonFeapder_imgurl/data.xlsx'
@@ -92,7 +92,8 @@ class OzonSpider(feapder.Spider):
         response = self.session.post('https://seller.ozon.ru/api/site/seller-analytics/what_to_sell/data/v3',
                                      headers=self.headers,
                                      json=json_data,
-                                     cookies=self.cookies)
+                                     cookies=self.cookies,
+                                     timeout=60)
         # with open('ozonfeapder.html', 'w') as f:
         #     f.write(response.text
 

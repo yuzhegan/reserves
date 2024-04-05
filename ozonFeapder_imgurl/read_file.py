@@ -30,12 +30,12 @@ class ReadFile:
         # self.ws.cell(row=1, column=self.ws.max_column).value = '平均送达时间'
         # self.ws.insert_cols(-1) # 插入在最后一列
         # self.ws.cell(row=1, column=self.ws.max_column).value = '平均送达时间'
-        clos_names = ['avgDeliveryDays', 'avgGmv', 'avgGmvOnAccDays', 'avgOrdersOnAccDays', 'avgPricel','createDate','daysInStock', 'fboStock', 'gmvSum', 'minSellerPrice', 'salesSchema', 'sellerId', 'soldCount', 'soldSum']
-        max_col = self.ws.max_column
-        for i in range(1, len(clos_names)+1):
-            self.ws.insert_cols(max_col + i)
-            self.ws.cell(row=1, column=max_col +
-                         i).value = clos_names[i-1]
+        # clos_names = ['avgDeliveryDays', 'avgGmv', 'avgGmvOnAccDays', 'avgOrdersOnAccDays', 'avgPricel','createDate','daysInStock', 'fboStock', 'gmvSum', 'minSellerPrice', 'salesSchema', 'sellerId', 'soldCount', 'soldSum']
+        # max_col = self.ws.max_column
+        # for i in range(1, len(clos_names)+1):
+        #     self.ws.insert_cols(max_col + i)
+        #     self.ws.cell(row=1, column=max_col +
+        #                  i).value = clos_names[i-1]
 
 
 # if __name__ == '__main__':
