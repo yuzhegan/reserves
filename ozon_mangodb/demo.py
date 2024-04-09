@@ -11,18 +11,18 @@ import math
 
 # 1. 读取数据
 path = ('./ozon_mangodb/ozon_test.xlsx')
-df = pl.from_pandas(pd.read_excel(path))
+df = pl.from_pandas(pd.read_excel(path, engine="openpyxl"))
 # df = pl.read_excel(path, sheet_name='Sheet1',
 #                    read_csv_options={'ignore_errors': True, 'skip_rows': 0, 'dtypes': {}})
 print(df.schema)
 df = df.with_columns([(pl.col('28日销售额')/pl.col('28日订单均价')).alias('28日销量'),
                       (pl.lit(10)).alias('越库费'),
-                      ((pl.col('28日订单均价')*0.17).apply(lambda x: math.ceil(x))
+                      ((pl.col('28日订单均价')*0.17).map_elements(lambda x: math.ceil(x), return_dtype=pl.Float64)
                        ).alias('类目佣金'),  # 向上取整
-                      ((pl.col('28日订单均价')*0.01).apply(lambda x: math.ceil(x))
+                      ((pl.col('28日订单均价')*0.01).map_elements(lambda x: math.ceil(x), return_dtype=pl.Float64)
                        ).alias('平台收单费'),  # 向上取整
                       (pl.lit(32).alias('物流')),
-                      ((pl.col('28日订单均价')*0.055).apply(lambda x: math.ceil(x))
+                      ((pl.col('28日订单均价')*0.055).map_elements(lambda x: math.ceil(x), return_dtype=pl.Float64)
                        ).alias('最后一公里'),
 
                       ])
@@ -38,7 +38,7 @@ df = df.with_columns([
 df.write_excel('./ozon_mangodb/ozon_test_output.xlsx')
 # exit()
 # 透视表
-plvt = df.groupby(['二级分类', '三级分类', '四级分类']).agg([pl.col('商品链接').count().alias('类目产品数量'),
+plvt = df.group_by(['二级分类', '三级分类', '四级分类']).agg([pl.col('商品链接').count().alias('类目产品数量'),
                                                  pl.col('28日销量').sum().alias(
     '28日销量'),
     pl.col('28日销售额').sum().alias(
