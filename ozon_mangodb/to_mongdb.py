@@ -12,13 +12,13 @@ import polars as pl
 import pandas as pd
 
 
-db = MongoClient('mongodb://192.168.3.41:27017/')
+db = MongoClient('mongodb://127.0.0.1:27017/')
 mydb = db['ozon']
 collection_category = mydb['ozon_category']
 collection_product = mydb['ozon_product']
 
-df = pl.read_excel('./ozon_mangodb/ozon_test_output_pivot.xlsx')
-
+# df = pl.read_excel('./ozon_mangodb/ozon_test_output_pivot.xlsx')
+#
 # for row in df.rows():
 #     data = {}
 #     for i, col in enumerate(df.columns):
