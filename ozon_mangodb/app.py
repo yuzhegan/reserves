@@ -16,7 +16,7 @@ from bson import ObjectId
 
 
 app = FastAPI()
-client = MongoClient("mongodb://127.0.0.1:27017/")
+client = MongoClient("mongodb://192.168.3.41:27017/")
 db = client["ozon"]
 collection_category = db['ozon_category']  # 类目数据
 collection_product = db['ozon_product']  # 详情数据
@@ -164,4 +164,4 @@ async def create_category_list(product: Category):
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", reload=True, port=5050, host="0.0.0.0")
+    uvicorn.run("app:app", reload=True, port=5051, host="0.0.0.0")
