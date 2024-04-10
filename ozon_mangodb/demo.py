@@ -7,6 +7,7 @@ from icecream import ic
 import os
 import polars as pl
 import pandas as pd
+import re
 import math
 
 
@@ -52,10 +53,18 @@ class ozonMangodb():
             (pl.col('28日订单均价') - pl.col('越库费') - pl.col('类目佣金') - pl.col('平台收单费') - pl.col('物流') - pl.col('最后一公里')).alias('毛利润')
         ])
 
+
+
         # 第二步：使用已经存在的"毛利润"列计算"毛利润率"
         df = df.with_columns([
             (pl.col('毛利润') / pl.col('28日订单均价')).alias('毛利润率')
         ])
+
+        # 获取ozon_ID 作为唯一标识
+        df = df.with_columns([
+            (pl.col('商品链接').map_elements(lambda x: x.split('/')[-1], return_dtype=pl.Utf8)).alias('ID')
+        ])
+
         return df
 
     def GenPivotDatas(self, df):

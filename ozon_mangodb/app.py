@@ -10,7 +10,7 @@ from pydantic import BaseModel
 from pymongo import MongoClient
 from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
-
+import json
 import uvicorn
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder  # 导入jsonable_encoder来处理MongoDB文档
@@ -36,16 +36,14 @@ collection_product = db['ozon_product']  # 详情数据
 def convert_query(query):
     converted_query = {}
     for key, value in query.items():
-        if isinstance(value, dict):
+        if isinstance(value, dict) and 'min' in value or 'max' in value:
             converted_value = {}
             if 'max' in value:
                 converted_value['$lt'] = float(value['max'])
+                converted_query[key] = converted_value
             if 'min' in value:
                 converted_value['$gte'] = float(value['min'])
-
-
-            converted_query[key] = converted_value
-
+                converted_query[key] = converted_value
         else:
             converted_query[key] = value
     return converted_query
@@ -112,14 +110,15 @@ async def create_category_list(category: Category):
     query.update(formdata)
     query = {key: value for key, value in query.items() if value != {}}
     query = convert_query(query)
+    # 不返回_id
     ic(query)
-    result = collection_category.find(query).skip(skip).limit(limit)
+    result = collection_category.find(query, {"_id":0}).skip(skip).limit(limit)
     
     # 将MongoDB文档转换为可序列化的格式
-    for doc in result:
-        doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
-        serializable_result.append(doc)
-    return serializable_result
+    # for doc in result:
+    #     doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
+    #     serializable_result.append(doc)
+    return list(result)
 
 
 @app.post("/Product/")
@@ -188,13 +187,14 @@ async def create_product_list(product: Category):
     query = {key: value for key, value in query.items() if value != {}}
     query = convert_query(query)
     ic(query)
-    result = collection_product.find(query).skip(skip).limit(limit)
+    #不返回_id
+    result = collection_product.find(query, {"_id":0}).skip(skip).limit(limit)
     
     # 将MongoDB文档转换为可序列化的格式
-    for doc in result:
-        doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
-        serializable_result.append(doc)
-    return serializable_result
+    # for doc in result:
+    #     doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
+    #     serializable_result.append(doc)
+    return list(result)
 
 
 
