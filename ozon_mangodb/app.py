@@ -64,26 +64,26 @@ async def create_category_list(category: Category):
     if len(category.label) == 0:
         return "No label"
     elif len(category.label) == 1:
-        # 二级类目
-        category2 = category.label[0]
+        # 一级类目
+        category1 = category.label[0]
         query = {
-            "二级分类": category2,  # 假设这里使用传入的类别
+            "一级级分类": category1,  # 假设这里使用传入的类别
         }
     elif len(category.label) == 2:
-        category2 = category.label[0]
-        category3 = category.label[1]
+        category1 = category.label[0]
+        category2 = category.label[1]
         query = {
-            "二级分类": category2,
-            "三级分类": category3
+            "一级分类": category1,
+            "二级分类": category2
                 }
     elif len(category.label) == 3:
-        category2 = category.label[0]
-        category3 = category.label[1]
-        category4 = category.label[2]
+        category1 = category.label[0]
+        category2 = category.label[1]
+        category3 = category.label[2]
         query = {
+            "一级分类": category1,
             "二级分类": category2,
-            "三级分类": category3,
-            "四级分类": category4
+            "三级分类": category3
         }
 
     query.update(formdata)
@@ -112,30 +112,56 @@ async def create_category_list(product: Category):
                 formdata[key] = {"$gte": v}
             elif "max" in k:
                 formdata[key] = {"$lte": v}
-
     
     if len(product.label) == 0:
         return "No label"
     elif len(product.label) == 1:
-        # 二级类目
-        category2 = product.label[0]
+        # 一级类目
+        category1 = product.label[0]
 
         query = {
-            "二级分类": category2,  # 假设这里使用传入的类别
+            "一级分类": category1,  # 假设这里使用传入的类别
         }
-        query.update(formdata)
-        query.update(roa)
-        ic(query)
-        result = collection_product.find(query).skip(skip).limit(limit)
-        
-        # 将MongoDB文档转换为可序列化的格式
-        serializable_result = []
-        for doc in result:
-            doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
-            serializable_result.append(doc)
+    elif len(product.label) == 2:
+        category1 = product.label[0]
+        category2 = product.label[1]
+        query = {
+            "一级分类": category1,
+            "二级分类": category2
+        }
+    elif len(product.label) == 3:
+        category1 = product.label[0]
+        category2 = product.label[1]
+        category3 = product.label[2]
+        query = {
+            "一级分类": category1,
+            "二级分类": category2,
+            "三级分类": category3
+        }
+    elif len(product.label) == 4:
+        category1 = product.label[0]
+        category2 = product.label[1]
+        category3 = product.label[2]
+        category4 = product.label[3]
+        query = {
+            "一级分类": category1,
+            "二级分类": category2,
+            "三级分类": category3,
+            "四级分类": category4
+        }
+
+    query.update(formdata)
+    ic(query)
+    result = collection_product.find(query).skip(skip).limit(limit)
+    
+    # 将MongoDB文档转换为可序列化的格式
+    serializable_result = []
+    for doc in result:
+        doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
+        serializable_result.append(doc)
         
         return serializable_result
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", reload=True, port=5050)
+    uvicorn.run("app:app", reload=True, port=5050, host="0.0.0.0")

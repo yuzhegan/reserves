@@ -31,6 +31,9 @@ class ozonMangodb():
         df = df.join(catagory2_dict,how='left',on='二级类别',left_on='二级类别',right_on='二级类别',suffix='_x')
         df = df.join(catagory3_dict,how='left',on='三级类别',left_on='三级类别',right_on='三级类别',suffix='_x')
         df = df.join(catagory4_dict,how='left',on='四级类别',left_on='四级类别',right_on='四级类别',suffix='_x')
+        # 添加一级分类
+        df = df.with_columns([(pl.lit('住宅与花园').alias('一级分类'))])
+
 
         # df.write_excel('./ozon_mangodb/ozon_test_output.xlsx')
         ic(df.schema)
@@ -58,7 +61,7 @@ class ozonMangodb():
     def GenPivotDatas(self, df):
         # exit()
         # 透视表
-        plvt = df.group_by(['二级分类', '三级分类', '四级分类']).agg([pl.col('商品链接').count().alias('类目产品数量'),
+        plvt = df.group_by(['一级分类','二级分类', '三级分类', '四级分类']).agg([pl.col('商品链接').count().alias('类目产品数量'),
                                                          pl.col('28日销量').sum().alias(
             '28日销量'),
             pl.col('28日销售额').sum().alias(
@@ -77,12 +80,12 @@ class ozonMangodb():
         return plvt
 
 
-# if __name__ == '__main__':
-#     file_path = './ozon_mangodb/ozon_test.xlsx'
-#     settings_path = './ozon_mangodb/设置.xlsx'
-#     ozondb = ozonMangodb(file_path, settings_path)
-#     df = ozondb.loaddatas()
-#     df.write_excel('./ozon_mangodb/ozon_test_output.xlsx')
-#     plvt = ozondb.GenPivotDatas(df)
-#     plvt.write_excel('./ozon_mangodb/ozon_test_output_pivot.xlsx')
-#
+if __name__ == '__main__':
+    file_path = './ozon_mangodb/ozon_test.xlsx'
+    settings_path = './ozon_mangodb/设置.xlsx'
+    ozondb = ozonMangodb(file_path, settings_path)
+    df = ozondb.loaddatas()
+    df.write_excel('./ozon_mangodb/ozon_test_output.xlsx')
+    plvt = ozondb.GenPivotDatas(df)
+    plvt.write_excel('./ozon_mangodb/ozon_test_output_pivot.xlsx')
+
