@@ -32,6 +32,7 @@ client = MongoClient("mongodb://127.0.0.1:27017/")
 db = client["ozon"]
 collection_category = db['ozon_category']  # 类目数据
 collection_product = db['ozon_product']  # 详情数据
+collection_save_product = db['save_product']  # 保存数据
 
 def convert_query(query):
     converted_query = {}
@@ -47,6 +48,38 @@ def convert_query(query):
         else:
             converted_query[key] = value
     return converted_query
+
+
+class Product(BaseModel):  # 定义一个保存模型
+    ID: str
+
+
+
+@app.post("/save_product/")
+async def save_product(product: Product):
+    product_dict = product.dict()
+    collection_save_product.insert_one(product_dict)
+    return f"产品 {product_dict['ID']} 保存成功"
+@app.post("/del_product/")
+async def del_product(product: Product):
+    product_dict = product.dict()
+    collection_save_product.delete_one(product_dict)
+    return f"产品 {product_dict['ID']} 删除成功"
+
+
+@app.get("/get_save_product/")
+async def SearchProduct(page: int = 1):
+    skip = (page - 1) * 50
+    cursor = collection_save_product.find({}, {"_id":0}).limit(50).skip(skip)
+    id_list = [doc['ID'] for doc in cursor]  # 提取ID列表
+    id_list = set(id_list)  # 去重
+    id_list = list(id_list) # 转换为列表
+    id_list = [int(id) for id in id_list]
+    ic(id_list)
+    result = collection_product.find({"ID": {"$in": id_list}}, {"_id":0})
+
+    return list(result)
+
 
 
 class Category(BaseModel):
@@ -195,6 +228,8 @@ async def create_product_list(product: Category):
     #     doc['_id'] = str(doc['_id'])  # 将ObjectId转换为字符串
     #     serializable_result.append(doc)
     return list(result)
+
+
 
 
 

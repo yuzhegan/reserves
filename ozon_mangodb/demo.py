@@ -7,8 +7,9 @@ from icecream import ic
 import os
 import polars as pl
 import pandas as pd
-import re
 import math
+import time
+
 
 
 class ozonMangodb():
@@ -18,6 +19,7 @@ class ozonMangodb():
         self.df = pl.from_pandas(pd.read_excel(self.file_path, engine="openpyxl"))
         self.columns_name = self.df.columns
         self.settings = pl.read_excel(self.settings_path)
+        self.str_today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 
     def loaddatas(self):
         #1.1 get cetegory columns
@@ -64,6 +66,9 @@ class ozonMangodb():
         df = df.with_columns([
             (pl.col('商品链接').map_elements(lambda x: x.split('/')[-1], return_dtype=pl.Utf8)).alias('ID')
         ])
+        df = df.with_columns(
+                pl.lit(self.str_today).alias("Updatetime")
+                )
 
         return df
 
@@ -86,6 +91,9 @@ class ozonMangodb():
             pl.col('因缺货而错过的订单金额（₽）').sum().alias(
             '缺货错失销售额')
         ]).sort(by='28日销售额', descending=True)
+        plvt = plvt.with_columns(
+            pl.lit(self.str_today).alias("Updatetime")
+                )
         return plvt
 
 
